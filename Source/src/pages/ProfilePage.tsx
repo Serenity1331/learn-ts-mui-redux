@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Container, Button } from '@mui/material'
+import { Container, Button, Typography } from '@mui/material'
 import { useHistory } from 'react-router-dom';
 import CustomTextField from '../components/CustomTextField';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 const ProfilePage: React.FC = () => {
     const history = useHistory();
@@ -34,6 +35,7 @@ const ProfilePage: React.FC = () => {
     return (
         <>
             <header className="profile-page__header">
+                <AccountBoxIcon fontSize="large" sx={{ color:"#fff"}} />
                 <Button sx={{ height: 'max-content' }} type="submit" variant="contained" onClick={() => history.push('/learn-ts-mui-redux/')}>Logout</Button>
             </header>
             <main className="profile-page__main">

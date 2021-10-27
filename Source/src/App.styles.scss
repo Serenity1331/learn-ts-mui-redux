@@ -35,7 +35,7 @@
 .profile-page {
     &__header {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
         background-color: $lightBlue;
         height: 50px;
