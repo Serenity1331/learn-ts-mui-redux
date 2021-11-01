@@ -11,6 +11,10 @@ function hasDigits(str: string) {
     return /\d/.test(str);
 }
 
+function isEmptyOrSpaces(str: string): boolean {
+    return !str || str.match(/^ *$/) !== null;
+}
+
 const LoginPage: React.FC = () => {
     const history = useHistory();
     const [login, setLogin] = useState<string>('');
@@ -18,11 +22,23 @@ const LoginPage: React.FC = () => {
     const [loginError, setLoginError] = useState<boolean>(false);
     const [passwordError, setPasswordError] = useState<boolean>(false);
 
+    // useCallback ?
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoginError(false);
         setPasswordError(false);
-        
+
+        // if (login === '' || hasWhiteSpace(login)) {
+        //     setLoginError(true);
+        // }
+
+        // OR
+
+        // if (isEmptyOrSpaces(login)) {
+        //     setLoginError(true);
+        // }
+
+
         if (login === '') {
             setLoginError(true);
         } else if (password === '') {
@@ -38,11 +54,11 @@ const LoginPage: React.FC = () => {
         } else {
             history.push('/learn-ts-mui-redux/profile')
         }
-      } 
+      }
 
     return (
         <div className="login-page__main">
-            <div className="login-page__container-main"> 
+            <div className="login-page__container-main">
                 <form noValidate autoComplete="off" className="login-page__form" onSubmit={(e: FormEvent<HTMLFormElement>) => handleSubmit(e)}>
                     <TextField error={loginError} value={login} onChange={(e) => setLogin(e.target.value)} id="outlined-basic" label="Login" variant="outlined" color="secondary" size="small" margin="dense" required />
                     <TextField error={passwordError} value={password} onChange={(e) => setPassword(e.target.value)} id="outlined-basic" label="Password" variant="outlined" color="secondary" size="small" margin="dense" required />
