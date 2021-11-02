@@ -8,9 +8,10 @@ const ProfilePage: React.FC = () => {
     const history = useHistory();
     const [editDisabled, setEditDisabled] = useState<boolean>(true);
 
-    let btnTitle;
-    editDisabled ? btnTitle = 'Edit' : btnTitle = 'Finish Editing'
+    let btnTitle = editDisabled ? 'Edit' : 'Finish Editing'; // WHY NOT?
+    // editDisabled ? btnTitle = 'Edit' : btnTitle = 'Finish Editing'
 
+    // !! MOVE OUT FROM COMPONENT
     interface Profile {
         name: string,
         surname: string,
@@ -28,10 +29,18 @@ const ProfilePage: React.FC = () => {
     })
 
     const editFields = () => setEditDisabled(!editDisabled);
+    const toggleEditFields = React.useCallback(() => setEditDisabled(!editDisabled), [])
+
+    // also useCallback
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFieldValue({ ...fieldValue, [e.target.name]: e.target.value })
-}
-    
+    }
+
+    const defaultTextFieldProps = React.useMemo(() => ({
+            variant: "outlined",
+            color: "primary"
+        }
+    ),[]);
     return (
         <>
             <header className="profile-page__header">
@@ -41,8 +50,8 @@ const ProfilePage: React.FC = () => {
             <main className="profile-page__main">
                 <Container className="profile-page__customer-info">
                     <form noValidate autoComplete="off" className="profile-page__form">
-                        <Button sx={{ mb: 2 }} variant="contained" onClick={() => editFields()}>{ btnTitle }</Button>
-                        <CustomTextField value={fieldValue.name} type='text' disabled={editDisabled} name={'Name'} changeHandler={(e) => handleChange(e)}/>
+                        <Button sx={{ mb: 2 }} variant="contained" onClick={toggleEditFields}>{ btnTitle }</Button>
+                        <CustomTextField {...defaultTextFieldProps} value={fieldValue.name} type='text' disabled={editDisabled} name={'Name'} changeHandler={(e) => handleChange(e)}/>
                         <CustomTextField value={fieldValue.surname} type='text' disabled={editDisabled} name={'Surname'} changeHandler={(e) => handleChange(e)}/>
                         <CustomTextField value={fieldValue.age} type='number' disabled={editDisabled} name={'Age'} changeHandler={(e) => handleChange(e)}/>
                         <CustomTextField value={fieldValue.occupation} type='text' disabled={editDisabled} name={'Occupation'} changeHandler={(e) => handleChange(e)}/>
