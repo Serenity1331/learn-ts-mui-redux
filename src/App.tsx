@@ -1,25 +1,80 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import "./reset.css";
+import "./App.styles.scss";
+import { createTheme } from '@mui/material/styles';
+import { indigo } from '@mui/material/colors';
+import { AppBar, ThemeProvider } from '@mui/material';
+import { BrowserRouter, Route } from 'react-router-dom'; 
+import LoginPage from './pages/LoginPage';
+import ProfilePage from './pages/ProfilePage';
+import { useDispatch} from 'react-redux'
+import { fetchData } from './action-creators/fetchData';
 
-function App() {
+const theme = createTheme({
+  palette: {
+    secondary: {
+      main: indigo[500],
+    },
+    text: {
+      primary: '#cacbd2',
+    },
+    mode: 'dark',
+  },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        notchedOutline: {
+          borderColor: '#3f51b5',
+        }
+      }
+    },
+    MuiAppBar: {
+      defaultProps: {
+        enableColorOnDark: true,
+      },
+      styleOverrides: {
+        root: {
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '10px',
+          height: '60px',
+          backgroundColor: '#0e114e'
+        }
+      }
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none'
+        }
+      }
+    }
+  },
+  typography: {
+    // body2: {
+    //   backgroundColor: '#161528',
+    //   height: '100%',
+    // }
+  }
+});
+
+const App: React.FC = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+      dispatch(fetchData('https://jsonplaceholder.typicode.com/users/1'))
+  }, [])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <div className="App">
+            <Route component={LoginPage} path="/learn-ts-mui-redux/" exact />
+            <Route component={ProfilePage} path="/learn-ts-mui-redux/profile" exact />
+          </div>
+        </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,70 @@
+@import "variables";
+
+.App {
+    height: 100vh;
+    // background: $white-1;
+}
+
+.login-page {
+    &__main {
+        height: 100%;
+        background: $darkBlue;
+    }
+
+    &__container-main {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        border: 2px solid $indigo;
+        width: 300px !important;
+        margin: 0 auto;
+        padding: 40px 0;
+        // background-color: $lightGray;
+        background-color: $darkBlueAlt;
+        // background-color: white;
+        // color: white !important;
+    }
+
+    &__form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    // &__field {
+    //     color: #cacbd2 !important;
+    // }
+}
+
+.profile-page {
+    &__container-main {
+        background: #161528;
+        height: 100%;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $darkBlueAlt;
+        height: 50px;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        padding: 10px;
+    }
+}
+
