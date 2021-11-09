@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/learn-ts-mui-redux/static/css/main.86d3b8d7.chunk.css",
-    "main.js": "/learn-ts-mui-redux/static/js/main.1bfe686b.chunk.js",
-    "main.js.map": "/learn-ts-mui-redux/static/js/main.1bfe686b.chunk.js.map",
-    "runtime-main.js": "/learn-ts-mui-redux/static/js/runtime-main.9c31a1f9.js",
-    "runtime-main.js.map": "/learn-ts-mui-redux/static/js/runtime-main.9c31a1f9.js.map",
-    "static/js/2.ad6f5946.chunk.js": "/learn-ts-mui-redux/static/js/2.ad6f5946.chunk.js",
-    "static/js/2.ad6f5946.chunk.js.map": "/learn-ts-mui-redux/static/js/2.ad6f5946.chunk.js.map",
-    "static/js/3.5fd34e78.chunk.js": "/learn-ts-mui-redux/static/js/3.5fd34e78.chunk.js",
-    "static/js/3.5fd34e78.chunk.js.map": "/learn-ts-mui-redux/static/js/3.5fd34e78.chunk.js.map",
+    "main.css": "/learn-ts-mui-redux/static/css/main.e958f09a.chunk.css",
+    "main.js": "/learn-ts-mui-redux/static/js/main.1ec48fb7.chunk.js",
+    "main.js.map": "/learn-ts-mui-redux/static/js/main.1ec48fb7.chunk.js.map",
+    "runtime-main.js": "/learn-ts-mui-redux/static/js/runtime-main.03d54d76.js",
+    "runtime-main.js.map": "/learn-ts-mui-redux/static/js/runtime-main.03d54d76.js.map",
+    "static/js/2.3e6b6c62.chunk.js": "/learn-ts-mui-redux/static/js/2.3e6b6c62.chunk.js",
+    "static/js/2.3e6b6c62.chunk.js.map": "/learn-ts-mui-redux/static/js/2.3e6b6c62.chunk.js.map",
+    "static/js/3.963872b1.chunk.js": "/learn-ts-mui-redux/static/js/3.963872b1.chunk.js",
+    "static/js/3.963872b1.chunk.js.map": "/learn-ts-mui-redux/static/js/3.963872b1.chunk.js.map",
     "index.html": "/learn-ts-mui-redux/index.html",
-    "static/css/main.86d3b8d7.chunk.css.map": "/learn-ts-mui-redux/static/css/main.86d3b8d7.chunk.css.map",
-    "static/js/2.ad6f5946.chunk.js.LICENSE.txt": "/learn-ts-mui-redux/static/js/2.ad6f5946.chunk.js.LICENSE.txt"
+    "static/css/main.e958f09a.chunk.css.map": "/learn-ts-mui-redux/static/css/main.e958f09a.chunk.css.map",
+    "static/js/2.3e6b6c62.chunk.js.LICENSE.txt": "/learn-ts-mui-redux/static/js/2.3e6b6c62.chunk.js.LICENSE.txt",
+    "static/media/Excalibur.b38d1984.png": "/learn-ts-mui-redux/static/media/Excalibur.b38d1984.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.9c31a1f9.js",
-    "static/js/2.ad6f5946.chunk.js",
-    "static/css/main.86d3b8d7.chunk.css",
-    "static/js/main.1bfe686b.chunk.js"
+    "static/js/runtime-main.03d54d76.js",
+    "static/js/2.3e6b6c62.chunk.js",
+    "static/css/main.e958f09a.chunk.css",
+    "static/js/main.1ec48fb7.chunk.js"
   ]
 }
