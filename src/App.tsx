@@ -3,12 +3,13 @@ import "./reset.css";
 import "./App.styles.scss";
 import { createTheme } from '@mui/material/styles';
 import { indigo } from '@mui/material/colors';
-import { AppBar, ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material';
 import { BrowserRouter, Route } from 'react-router-dom'; 
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
 import { useDispatch} from 'react-redux'
 import { fetchData } from './action-creators/fetchData';
+import { postData } from './action-creators/postData';
 
 const theme = createTheme({
   palette: {
@@ -51,19 +52,16 @@ const theme = createTheme({
       }
     }
   },
-  typography: {
-    // body2: {
-    //   backgroundColor: '#161528',
-    //   height: '100%',
-    // }
-  }
 });
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(fetchData('https://jsonplaceholder.typicode.com/users/1'))
+    // const jsonplaceholderUrl = 'https://jsonplaceholder.typicode.com/users/1';
+    const localUrl = 'http://localhost:3000/user';
+      // dispatch(fetchData(localUrl))
+      dispatch(postData(localUrl))
   }, [])
   
   return (

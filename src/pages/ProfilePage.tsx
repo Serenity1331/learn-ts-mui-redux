@@ -1,6 +1,5 @@
 import React from 'react'
-import { Container, Button, TextField, Typography, AppBar } from '@mui/material'
-import { StyledTextField } from '../components/StyledTextField';
+import { Button, TextField, Typography, AppBar, Grid } from '@mui/material'
 import { useHistory } from 'react-router-dom';
 import { routes } from '../routes';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
@@ -16,6 +15,7 @@ const ProfilePage: React.FC = () => {
     const isEditable = useSelector((state: RootStateOrAny) => state.isEditable)
     const userData = useSelector((state: RootStateOrAny) => state.userData)
     let btnTitle = isEditable ? 'Finish Editing' : 'Edit'
+    console.log(userData)
     
     const toggleEditFields = React.useCallback(() => toggleEditMode(), [toggleEditMode])
     const clickHandler = React.useCallback(() => history.push(routes.loginPage), [history])
@@ -37,29 +37,25 @@ const ProfilePage: React.FC = () => {
     }
 
     return (
-        <>
-            <div className="profile-page__container-main">
-            {/* <Typography variant="body2"> */}
-                <AppBar>
-                    <AccountBoxIcon fontSize="large" sx={{ color:'#ababc1'}} />
-                    <Button type="submit" variant="contained" color="secondary" onClick={clickHandler}>Logout</Button>
-                </AppBar>
-                {/* <header className="profile-page__header">
-                    <AccountBoxIcon fontSize="large" sx={{ color:"#fff"}} />
-                    <Button sx={{ height: 'max-content' }} type="submit" variant="contained" onClick={clickHandler}>Logout</Button>
-                </header> */}
-                <main className="profile-page__main">
-                    <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingTop: '60px', justifyContent: 'center'}}>
+        <div className="profile-page__container-main">
+            <AppBar>
+                <AccountBoxIcon fontSize="large" sx={{ color:'#ababc1'}} />
+                <Button type="submit" variant="contained" color="secondary" onClick={clickHandler}>Logout</Button>
+            </AppBar>
+            <main className="profile-page__main">
+                <Grid container justifyContent="center" alignItems="center" sx={{pt: 10}}>
+                    <Grid item >
                         <img src={lady} alt="Lady" height='500' />
+                    </Grid>
+                    <Grid item>
                         <form noValidate autoComplete="off" className="profile-page__form">
-                            <Button sx={{ mb: 2 }} onClick={toggleEditFields} variant="contained" color="secondary">{ btnTitle }</Button>
+                            <Button sx={{ mb: 2, minWidth: '100px', fontSize: '16px'}} onClick={toggleEditFields} variant="contained" color="secondary">{ btnTitle }</Button>
                             { userData.loadComplete ? showTextFields() : <Typography variant="h5" sx={{ color: 'white' }}>Error. Could not load any data</Typography>}
                         </form>
-                    </Container>
-                </main>
-            {/* </Typography> */}
-            </div>
-        </>
+                    </Grid>
+                </Grid>
+            </main>
+        </div>
     )
 }
 
