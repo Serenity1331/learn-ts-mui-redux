@@ -5,8 +5,9 @@ import { routes } from '../routes';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { RootStateOrAny, useSelector, useDispatch} from 'react-redux'
 import * as actionCreators from '../action-creators/index'
+import { postData } from '../action-creators/postData';
 import { bindActionCreators } from 'redux';
-import lady from '../images/Excalibur.png'
+import lady from '../assets/images/Excalibur.png'
 
 const ProfilePage: React.FC = () => {
     const history = useHistory();
@@ -15,9 +16,15 @@ const ProfilePage: React.FC = () => {
     const isEditable = useSelector((state: RootStateOrAny) => state.isEditable)
     const userData = useSelector((state: RootStateOrAny) => state.userData)
     let btnTitle = isEditable ? 'Finish Editing' : 'Edit'
-    console.log(userData)
     
-    const toggleEditFields = React.useCallback(() => toggleEditMode(), [toggleEditMode])
+    const editAndSaveData = () => {
+        toggleEditMode();
+
+        if (btnTitle === 'Finish Editing') {
+            dispatch(postData('http://localhost:3000/user', userData.users))
+        }
+    }
+
     const clickHandler = React.useCallback(() => history.push(routes.loginPage), [history])
     const onChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         editProfile({[e.target.name]: e.target.value })
@@ -27,11 +34,11 @@ const ProfilePage: React.FC = () => {
         const { name, email, website, phone, username } = userData.users;
         return (
             <>
-                <TextField sx={{ width: '220px'}} value={name} type='text' className="profile-page__field" label='Name' name='name' disabled={!isEditable} onChange={onChange} variant="outlined" color="secondary" size="small" margin="normal"/>
-                <TextField sx={{ width: '220px'}} value={username} type='text' className="profile-page__field" label='Username' name='username' disabled={!isEditable} onChange={onChange} variant="outlined" color="secondary" size="small" margin="normal"/>
-                <TextField sx={{ width: '220px'}} value={phone} type='text' className="profile-page__field" label='Phone' name='phone' disabled={!isEditable} onChange={onChange} variant="outlined" color="secondary" size="small" margin="normal"/>
-                <TextField sx={{ width: '220px'}} value={email} type='text' className="profile-page__field" label='Email' name='email' disabled={!isEditable} onChange={onChange} variant="outlined" color="secondary" size="small" margin="normal"/>
-                <TextField sx={{ width: '220px'}} value={website} type='text' className="profile-page__field" label='Website' name='website' disabled={!isEditable} onChange={onChange} variant="outlined" color="secondary" size="small" margin="normal"/>
+                <TextField sx={{ width: '300px'}} value={name} type='text' className="profile-page__field" label='Name' name='name' disabled={!isEditable} onChange={onChange} variant="outlined" color="secondary" size="small" margin="normal"/>
+                <TextField sx={{ width: '300px'}} value={username} type='text' className="profile-page__field" label='Username' name='username' disabled={!isEditable} onChange={onChange} variant="outlined" color="secondary" size="small" margin="normal"/>
+                <TextField sx={{ width: '300px'}} value={phone} type='text' className="profile-page__field" label='Phone' name='phone' disabled={!isEditable} onChange={onChange} variant="outlined" color="secondary" size="small" margin="normal"/>
+                <TextField sx={{ width: '300px'}} value={email} type='text' className="profile-page__field" label='Email' name='email' disabled={!isEditable} onChange={onChange} variant="outlined" color="secondary" size="small" margin="normal"/>
+                <TextField sx={{ width: '300px'}} value={website} type='text' className="profile-page__field" label='Website' name='website' disabled={!isEditable} onChange={onChange} variant="outlined" color="secondary" size="small" margin="normal"/>
             </>
         )
     }
@@ -49,7 +56,7 @@ const ProfilePage: React.FC = () => {
                     </Grid>
                     <Grid item>
                         <form noValidate autoComplete="off" className="profile-page__form">
-                            <Button sx={{ mb: 2, minWidth: '100px', fontSize: '16px'}} onClick={toggleEditFields} variant="contained" color="secondary">{ btnTitle }</Button>
+                            <Button sx={{ mb: 2, minWidth: '100px', fontSize: '16px'}} onClick={() => editAndSaveData()} variant="contained" color="secondary">{ btnTitle }</Button>
                             { userData.loadComplete ? showTextFields() : <Typography variant="h5" sx={{ color: 'white' }}>Error. Could not load any data</Typography>}
                         </form>
                     </Grid>

@@ -1,16 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require("cors");
 
 const app = express();
-const cors = require("cors");
 app.use(cors());
 
 let user = {
     name: 'Elvira',
     username: 'Mistress of the Dark',
-    phone: '6-999-666-999',
+    phone: '6-666-666-66',
     email: 'cassandra@yahoo.com',
-    website: 'boobsinthedarkness.com'
+    website: 'www.jointhedarkside.com'
 }
 
 app.use(bodyParser.json());

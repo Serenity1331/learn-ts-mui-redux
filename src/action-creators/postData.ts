@@ -14,22 +14,14 @@ export const addUsersFailure = (error: any) => {
     }
 }
 
-const object = {
-    method: 'POST',
-    body: JSON.stringify({
-        name: 'Jennifer',
-        username: 'Excalibur',
-        phone: '1-666-11-22',
-        email: 'yahoo@yahoo.com',
-        website: 'yahoo.com'
-    }),
-    headers: {
-        'Content-type': 'application/json; charset=UTF-8'
-    }
-}
-
-export const postData = (url: string) => (dispatch: Dispatch) => {
-    fetch(url, object)
+export const postData = (url: string, body: object) => (dispatch: Dispatch) => {
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+            }
+        })
         .then(response => response.json())
         .then(users => {
             dispatch(addUsersSuccess(users))
